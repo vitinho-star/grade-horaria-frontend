@@ -35,7 +35,7 @@ async function cadastrar() {
   let professor = document.getElementById("campoProfessor").value;
   let sala = document.getElementById("campoSala").value;
   let horario = document.getElementById("campoHorario").value;
- let faltas = document.getElementById("campoFaltas").value;
+  let faltas = document.getElementById("campoFaltas").value;
 
   let checkboxesMarcados = document.querySelectorAll(".checkboxDia:checked");
   let diasSelecionados = [];
@@ -135,7 +135,7 @@ async function buscarGrade() {
       }
 
       if (aulaEncontrada) {
-        html += "<div class='celula aula-celula' onclick='iniciarEdicao(" + aulaEncontrada.id + ", \"" + aulaEncontrada.materia + "\", \"" + aulaEncontrada.professor + "\", \"" + aulaEncontrada.sala + "\", \"" + aulaEncontrada.dia_semana + "\", \"" + aulaEncontrada.horario + "\", \"" + aulaEncontrada.faltas + "\")'>" +
+        html += "<div class='celula aula-celula' onclick='iniciarEdicao(" + aulaEncontrada.id + ", \"" + aulaEncontrada.materia + "\", \"" + aulaEncontrada.professor + "\", \"" + aulaEncontrada.sala + "\", \"" + aulaEncontrada.dia_semana + "\", \"" + aulaEncontrada.horario + "\", \"" + (aulaEncontrada.faltas || "0") + "\")'>" +
                     "<button class='btn-x' onclick='event.stopPropagation(); excluirAula(" + aulaEncontrada.id + ")'>×</button>" +
                     "<strong>" + aulaEncontrada.materia + "</strong>" +
                   "</div>";
@@ -228,7 +228,7 @@ async function buscarMaterias() {
 
   for (let i = 0; i < grade.length; i++) {
     let aula = grade[i];
-    let chave = aula.materia + "|" + aula.professor + "|" + aula.sala + "|" + aula.faltas;
+    let chave = aula.materia + "|" + aula.professor + "|" + aula.sala;
 
     if (chavesVistas.indexOf(chave) === -1) {
       chavesVistas.push(chave);
@@ -241,7 +241,7 @@ async function buscarMaterias() {
     let m = materiasUnicas[i];
     html += "<div class='cartao-materia'>" +
               "<strong>" + m.materia + "</strong><br>" +
-             "Prof. " + m.professor + " — Sala " + m.sala + " — Nº de Faltas " + (m.faltas || "0") + 
+              "Prof. " + m.professor + " — Sala " + m.sala + " — Nº de Faltas " + (m.faltas || "0") +
             "</div>";
   }
   document.getElementById("areaMaterias").innerHTML = html;
