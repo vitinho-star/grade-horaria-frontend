@@ -155,7 +155,7 @@ function iniciarEdicao(id, materia, professor, sala, dia, horario, faltas) {
   document.getElementById("campoProfessor").value = professor;
   document.getElementById("campoSala").value = sala;
   document.getElementById("campoHorario").value = horario;
-  document.getElementById("campoFaltas").value = faltas;
+  document.getElementById("campoFaltas").value = faltas || "0";
 
   let checkboxes = document.querySelectorAll(".checkboxDia");
   for (let i = 0; i < checkboxes.length; i++) {
@@ -241,7 +241,7 @@ async function buscarMaterias() {
     let m = materiasUnicas[i];
     html += "<div class='cartao-materia'>" +
               "<strong>" + m.materia + "</strong><br>" +
-              "Prof. " + m.professor + " — Sala " + m.sala + " — Nº de Faltas " + m.faltas + 
+             "Prof. " + m.professor + " — Sala " + m.sala + " — Nº de Faltas " + (m.faltas || "0") + 
             "</div>";
   }
   document.getElementById("areaMaterias").innerHTML = html;

@@ -360,3 +360,7 @@ body {
 .dia-cal:hover {
   background-color: #f3f4f6;
 }
+
+.botaoabaFaltas{
+  background-color: #ff0404;
+}
