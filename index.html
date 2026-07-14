@@ -28,6 +28,7 @@
     <button onclick="mostrarAba('cadastro')" class="botao-aba" id="botaoAbaCadastro">Cadastrar Matérias</button>
     <button onclick="mostrarAba('grade')" class="botao-aba" id="botaoAbaGrade">Grade de Horários</button>
     <button onclick="mostrarAba('calendario')" class="botao-aba" id="botaoAbaCalendario">Calendário</button>
+    <button onclick ="mostrarAba( 'controle de faltas')" class="botao-aba" id="botaoAbaFaltas">Controle de Faltas</button>
   </div>
 
   <div id="abaCadastro" class="aba-conteudo">
@@ -37,6 +38,7 @@
         <input type="text" id="campoMateria" placeholder="Matéria">
         <input type="text" id="campoProfessor" placeholder="Professor">
         <input type="text" id="campoSala" placeholder="Sala">
+        <input type="text" id="campoFaltas" placeholder="Faltas Permitidas">
         <div class="dias-semana">
           <label><input type="checkbox" value="Segunda" class="checkboxDia"> Seg</label>
           <label><input type="checkbox" value="Terça" class="checkboxDia"> Ter</label>
@@ -45,7 +47,7 @@
           <label><input type="checkbox" value="Sexta" class="checkboxDia"> Sex</label>
           <label><input type="checkbox" value="Sábado" class="checkboxDia"> Sáb</label>
         </div>
-        <input type="text" id="campoHorario" placeholder="Horário">
+        <input type="text" id="campoHorario" placeholder="Horário (ex: 07:10 - 09:20)">
         <button onclick="cadastrar()">Salvar</button>
       </div>
 

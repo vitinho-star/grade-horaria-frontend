@@ -35,6 +35,7 @@ async function cadastrar() {
   let professor = document.getElementById("campoProfessor").value;
   let sala = document.getElementById("campoSala").value;
   let horario = document.getElementById("campoHorario").value;
+ let faltas = document.getElementById("campoFaltas").value;
 
   let checkboxesMarcados = document.querySelectorAll(".checkboxDia:checked");
   let diasSelecionados = [];
@@ -51,6 +52,7 @@ async function cadastrar() {
         sala: sala,
         dia: diasSelecionados[i],
         horario: horario,
+        faltas: faltas,
         usuarioId: usuarioAtual.id
       };
 
@@ -67,6 +69,7 @@ async function cadastrar() {
       sala: sala,
       dia: diasSelecionados[0],
       horario: horario,
+      faltas: faltas,
       usuarioId: usuarioAtual.id
     };
 
@@ -88,6 +91,7 @@ function limparCampos() {
   document.getElementById("campoProfessor").value = "";
   document.getElementById("campoSala").value = "";
   document.getElementById("campoHorario").value = "";
+  document.getElementById("campoFaltas").value = "";
 
   let checkboxes = document.querySelectorAll(".checkboxDia");
   for (let i = 0; i < checkboxes.length; i++) {
@@ -131,7 +135,7 @@ async function buscarGrade() {
       }
 
       if (aulaEncontrada) {
-        html += "<div class='celula aula-celula' onclick='iniciarEdicao(" + aulaEncontrada.id + ", \"" + aulaEncontrada.materia + "\", \"" + aulaEncontrada.professor + "\", \"" + aulaEncontrada.sala + "\", \"" + aulaEncontrada.dia_semana + "\", \"" + aulaEncontrada.horario + "\")'>" +
+        html += "<div class='celula aula-celula' onclick='iniciarEdicao(" + aulaEncontrada.id + ", \"" + aulaEncontrada.materia + "\", \"" + aulaEncontrada.professor + "\", \"" + aulaEncontrada.sala + "\", \"" + aulaEncontrada.dia_semana + "\", \"" + aulaEncontrada.horario + "\", \"" + aulaEncontrada.faltas + "\")'>" +
                     "<button class='btn-x' onclick='event.stopPropagation(); excluirAula(" + aulaEncontrada.id + ")'>×</button>" +
                     "<strong>" + aulaEncontrada.materia + "</strong>" +
                   "</div>";
@@ -145,12 +149,13 @@ async function buscarGrade() {
   document.getElementById("areaGrade").innerHTML = html;
 }
 
-function iniciarEdicao(id, materia, professor, sala, dia, horario) {
+function iniciarEdicao(id, materia, professor, sala, dia, horario, faltas) {
   idEditando = id;
   document.getElementById("campoMateria").value = materia;
   document.getElementById("campoProfessor").value = professor;
   document.getElementById("campoSala").value = sala;
   document.getElementById("campoHorario").value = horario;
+  document.getElementById("campoFaltas").value = faltas;
 
   let checkboxes = document.querySelectorAll(".checkboxDia");
   for (let i = 0; i < checkboxes.length; i++) {
@@ -223,7 +228,7 @@ async function buscarMaterias() {
 
   for (let i = 0; i < grade.length; i++) {
     let aula = grade[i];
-    let chave = aula.materia + "|" + aula.professor + "|" + aula.sala;
+    let chave = aula.materia + "|" + aula.professor + "|" + aula.sala + "|" + aula.faltas;
 
     if (chavesVistas.indexOf(chave) === -1) {
       chavesVistas.push(chave);
@@ -236,7 +241,7 @@ async function buscarMaterias() {
     let m = materiasUnicas[i];
     html += "<div class='cartao-materia'>" +
               "<strong>" + m.materia + "</strong><br>" +
-              "Prof. " + m.professor + " — Sala " + m.sala +
+              "Prof. " + m.professor + " — Sala " + m.sala + " — Nº de Faltas " + m.faltas + 
             "</div>";
   }
   document.getElementById("areaMaterias").innerHTML = html;
