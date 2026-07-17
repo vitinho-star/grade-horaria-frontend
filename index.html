@@ -6,8 +6,17 @@
   <link rel="stylesheet" href="estilo.css">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body>
-
+<div class="fundo-engrenagens">
+  <img src="cogwheel.png" class="engrenagem eng-1" alt="Engrenagem 1">
+  
+  <img src="cogwheel.png" class="engrenagem eng-2" alt="Engrenagem 2">
+  
+  <img src="cogwheel.png" class="engrenagem eng-3" alt="Engrenagem 3">
+  
+  <img src="cogwheel.png" class="engrenagem eng-4" alt="Engrenagem 4">
+</div>
   <div id="telaLogin" class="tela-login">
     <h1>Minha Grade Horária</h1>
     <p>Faça login para acessar sua grade</p>
@@ -28,7 +37,7 @@
     <button onclick="mostrarAba('cadastro')" class="botao-aba" id="botaoAbaCadastro">Cadastrar Matérias</button>
     <button onclick="mostrarAba('grade')" class="botao-aba" id="botaoAbaGrade">Grade de Horários</button>
     <button onclick="mostrarAba('calendario')" class="botao-aba" id="botaoAbaCalendario">Calendário</button>
-    <button onclick ="mostrarAba( 'controle de faltas')" class="botao-aba" id="botaoAbaFaltas">Controle de Faltas</button>
+    <button onclick ="mostrarAba('controle')" class="botao-aba" id="botaoAbaControle">Controle de Faltas</button>
   </div>
 
   <div id="abaCadastro" class="aba-conteudo">
@@ -70,6 +79,11 @@
     <button onclick="mudarMes(1)">›</button>
   </div>
   <div id="areaCalendario" class="calendario-grade"></div>
+</div>
+
+<div id="abaControle" class="aba-conteudo escondido">
+  <h2>Meu Controle de Faltas</h2>
+
 </div>
 
   <script src="app.js"></script>

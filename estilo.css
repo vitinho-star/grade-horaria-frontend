@@ -200,10 +200,6 @@ h2 {
   font-size: 14px;
 }
 
-body {
-   background-image: url("prod.jpeg");
-}
-
 .topo-usuario {
   display: flex;
   justify-content: space-between;
@@ -363,4 +359,88 @@ body {
 
 .botaoabaFaltas{
   background-color: #ff0404;
+}
+
+/* --- CONFIGURAÇÃO DO FUNDO --- */
+.fundo-engrenagens {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f2f5; /* Um fundo claro, combinando com o estilo de papel/esboço */
+  z-index: -1; /* Garante que fique atrás de absolutamente tudo */
+  overflow: hidden; /* Evita barras de rolagem indesejadas */
+  opacity: 0.8; /* Deixa o fundo levemente sutil para não atrapalhar a leitura do texto */
+}
+
+/* Estilo padrão para todas as engrenagens */
+.engrenagem {
+  position: absolute;
+  transform-origin: center; /* Garante que elas girem exatamente no próprio eixo */
+  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.1)); /* Sombra suave para dar profundidade */
+}
+
+/* --- POSICIONAMENTO INDIVIDUAL E VELOCIDADE --- */
+
+/* Engrenagem 1 (Esquerda Superior) */
+.eng-1 {
+  width: 250px;
+  top: 10%;
+  left: 15%;
+  animation: girar-horario 12s linear infinite;
+}
+
+/* Engrenagem 2 (Encaixada logo abaixo/ao lado da 1) */
+.eng-2 {
+  width: 180px;
+  top: 25%; /* Ajuste esses valores para os "dentes" encostarem */
+  left: 28%;
+  animation: girar-anti-horario 8.6s linear infinite; /* Sentido oposto! */
+}
+
+/* Engrenagem 3 (Pequena, encaixada na 2) */
+.eng-3 {
+  width: 120px;
+  top: 38%;
+  left: 36%;
+  animation: girar-horario 5.7s linear infinite; /* Mais rápida porque é menor */
+}
+
+/* Engrenagem 4 (Uma perdida lá no canto inferior direito) */
+.eng-4 {
+  width: 200px;
+  bottom: 10%;
+  right: 10%;
+  animation: girar-anti-horario 10s linear infinite;
+}
+
+/* --- CONFIGURAÇÃO DO CONTEÚDO DO SITE --- */
+.conteudo-site {
+  position: relative;
+  z-index: 1; /* Fica por cima do fundo */
+  padding: 40px;
+  font-family: sans-serif;
+  color: #333;
+}
+
+
+/* --- ANIMAÇÕES (KEYFRAMES) --- */
+
+@keyframes girar-horario {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes girar-anti-horario {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
 }

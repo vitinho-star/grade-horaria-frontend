@@ -200,10 +200,12 @@ function mostrarAba(nomeAba) {
   document.getElementById("abaCadastro").classList.add("escondido");
   document.getElementById("abaGrade").classList.add("escondido");
   document.getElementById("abaCalendario").classList.add("escondido");
+  document.getElementById("abaControle").classList.add("escondido");
 
   document.getElementById("botaoAbaCadastro").classList.remove("ativo");
   document.getElementById("botaoAbaGrade").classList.remove("ativo");
   document.getElementById("botaoAbaCalendario").classList.remove("ativo");
+  document.getElementById("botaoAbaControle").classList.remove("ativo");
 
   if (nomeAba === "cadastro") {
     document.getElementById("abaCadastro").classList.remove("escondido");
@@ -216,6 +218,11 @@ function mostrarAba(nomeAba) {
     document.getElementById("abaCalendario").classList.remove("escondido");
     document.getElementById("botaoAbaCalendario").classList.add("ativo");
     gerarCalendario();
+  }
+  else if (nomeAba === "controle") {
+    document.getElementById("abaControle").classList.remove("escondido");
+    document.getElementById("botaoAbaControle").classList.add("ativo");
+    buscarControle();
   }
 }
 
