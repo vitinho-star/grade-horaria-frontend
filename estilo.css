@@ -444,3 +444,88 @@ h2 {
     transform: rotate(-360deg);
   }
 }
+
+/* ===== RESPONSIVIDADE ===== */
+
+html{width:100%}
+body{
+  min-height:100dvh;
+  overflow-x:hidden;
+}
+
+.container{
+  width:100%;
+  max-width:1000px;
+  margin:0 auto;
+}
+
+@media (max-width:768px){
+
+  body{
+    padding:16px;
+  }
+
+  .tela-login{
+    width:92%;
+    max-width:400px;
+    margin:40px auto;
+    padding:24px;
+  }
+
+  .layout-cadastro{
+    grid-template-columns:1fr;
+  }
+
+  .abas-nav{
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+
+  .cartao-aula{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .acoes-aula{
+    width:100%;
+    justify-content:flex-end;
+  }
+
+  .grade-tabela{
+    overflow:auto;
+    display:block;
+  }
+
+  .calendario-grade{
+    overflow:auto;
+  }
+
+  .fundo-engrenagens{
+    height:100dvh;
+  }
+
+  .eng-1{
+    width:120px;
+    left:-20px;
+    top:5%;
+  }
+
+  .eng-2{
+    width:90px;
+    left:60%;
+    top:18%;
+  }
+
+  .eng-3{
+    width:70px;
+    left:25%;
+    top:35%;
+  }
+
+  .eng-4{
+    width:110px;
+    right:-20px;
+    bottom:5%;
+  }
+}
