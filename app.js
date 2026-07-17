@@ -354,3 +354,45 @@ async function excluirEvento(id) {
 
   gerarCalendario();
 }
+
+async function buscarControle() {
+  let resposta = await fetch(API_URL + "/aulas?usuarioId=" + usuarioAtual.id);
+  let grade = await resposta.json();
+
+  let chavesVistas = [];
+  let materiasUnicas = [];
+
+  for (let i = 0; i < grade.length; i++) {
+    let aula = grade[i];
+    let chave = aula.materia + "|" + aula.professor + "|" + aula.sala;
+
+    if (chavesVistas.indexOf(chave) === -1) {
+      chavesVistas.push(chave);
+      materiasUnicas.push(aula);
+    }
+  }
+
+  let html = "";
+  for (let i = 0; i < materiasUnicas.length; i++) {
+    let m = materiasUnicas[i];
+    let limite = parseInt(m.faltas) || 0;
+    let dadas = m.faltas_dadas || 0;
+    let restantes = limite - dadas;
+
+    html += "<div class='cartao-materia'>" +
+              "<strong>" + m.materia + "</strong><br>" +
+              "Faltas: " + dadas + " de " + limite + " — Ainda pode faltar: " + restantes +
+              " <button onclick='registrarFalta(" + m.id + ")'>+1 falta</button>" +
+            "</div>";
+  }
+
+  document.getElementById("areaControle").innerHTML = html;
+}
+
+async function registrarFalta(idAula) {
+  await fetch(API_URL + "/aulas/" + idAula + "/registrar-falta", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" }
+  });
+  buscarControle();
+}
